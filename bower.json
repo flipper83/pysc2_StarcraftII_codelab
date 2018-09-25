@@ -1,0 +1,18 @@
+{
+  "name": "pysc2_codelab",
+  "authors": [
+    "gema.parreno.piqueras@gmail.com"
+  ],
+  "description": "codelab for StarCraft II ML project",
+  "main": "",
+  "license": "Apache 2.0",
+  "homepage": "StarcraftII.pySC2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
