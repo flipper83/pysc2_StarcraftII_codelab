@@ -305,7 +305,7 @@ In some cases innovations come in the way we think about the value function</p>
       duration="30-40">
       <p>
 
-      <img src="pysc2_images/pysc2_3_header.jpg"  style="max-width: 624px" alt="Theory Deep Reinforcement Learning">
+      <img src="pysc2_images/pysc2_3_header.jpg"  style="max-width: 624px" alt="Theory pysc2 environment">
       <h2>Overview</h2>
 
     <p>Find in this section a ripped version of pySC2 research published <a href="https://arxiv.org/abs/1708.04782" target="_blank" rel="noopener">paper</a> by DeepMind and Blizzard.</p>
@@ -334,7 +334,7 @@ In some cases innovations come in the way we think about the value function</p>
 
     <p><strong>Observations</strong></p>
 
-      <p>The games exposes observation from RGB pixels  rgb_screen  - view as a human would see -  and in a feature layer . Extra information beyond the screen is exposed as rgb_minimap  Feature like the pysc2 interpreter .
+      <p>The games exposes observation from RGB pixels  rgb_screen  - view as a human would see -  and in a feature layer structure . Extra information beyond the screen is exposed as rgb_minimap  Feature like the pysc2 interpreter .
           Inside features we must differentiate in between minimap feature layers and screen feature layers. One is looking at the screen and the other is looking at the top bottom left minimap . </p>
       <p>Besides that, it offers as a structured information 10 Tensors with different data with relevant information for the player.</p>
 
@@ -345,7 +345,7 @@ In some cases innovations come in the way we think about the value function</p>
           The actions are the output of the agent in every state t, that means, the decisions the agent must take in every time-step  …
           Pysc2 agent calls display available actions . Each action has its own argument or lists of arguments </p>
 
-      <img src="pysc2_images/pysc2_action.gif"  style="max-width: 624px" alt="Starcraft II Learning environment">
+      <img src="pysc2_images/pysc2_action.gif"  style="max-width: 624px" alt="Actions">
       <p>Action Space atomic level defined in pySC2</p>
 
     <h2>Agent Neural Net architectures</h2>
@@ -358,12 +358,15 @@ In some cases innovations come in the way we think about the value function</p>
 
    <h2>Results</h2>
 
-    <p>Here we have the comparison over DefeatRoaches mini-game , in which there is an overview of how you can use different neural net architectures .
+    <p>Here we have the comparison over different mini-games from pysc2 paper , in which there is an overview of how you can use different neural net architectures .
         In the Y axis, we find the score of the game, in the X axis we find the training time .
-        As we can see, FullyConv and Atari Net start giving best results than the FullyConv with memory. However, this paradigm changes in the long term.
+        As we can see, FullyConv and Atari Net start giving best results than the FullyConv with memory in the case of Defeat Roaches mini-game.
+        However, this paradigm changes in the long term and so does the performance of different architectures in different challenges.
         The graph shown above ilustrates how the long tail shows that the early performance seems to be better in certain kind of NN architectures but at
-        the end it changes and shows the best performance on LSTM+CNN . Starting learning quicker doesn´t mean that there will be a better
-        performance when the NN estabilishes itself . </p>
+        the end it changes and shows the best performance on LSTM+CNN . In Defeat Roaches case, starting learning quicker doesn´t mean that there will be a better
+        performance when the NN stabilizes itself . </p>
+
+    <img src="pysc2_images/pysc2_results.png"  style="max-width: 624px" alt="Results of performance in different mini-games">
 
 
     <h2>What are mini-games?</h2>
@@ -407,11 +410,7 @@ $ python -m pysc2.bin.agent --map HallucinIce
 
      <p>You should see something like this</p>
 
-
-    #-----------------#
-    #TODO : gif from this?
-    https://www.youtube.com/watch?v=ihpTmr_Orkg
-    #-----------------#
+      <img src="pysc2_images/pysc2_HallucinIceRandom.gif"  style="max-width: 624px" alt="Random Hallucination">
 
 
      <p>As you can check, there is nor learning neither strategy on this, as the agent is selecting random actions.
@@ -441,7 +440,7 @@ $ python -m pysc2.bin.agent --map HallucinIce  --agent pysc2.agents.scripted_age
 
     <p>And should see something like this</p>
 
-      <img src="pysc2_images/pysc2_HallucinIceArchon.gif"  style="max-width: 624px" alt="Quickstart overview of pySC2">
+      <img src="pysc2_images/pysc2_HallucinIceArchon.gif"  style="max-width: 500px" alt="Archon Hallucination">
 
       <pre><code>
 class HallucinationArchon(base_agent.BaseAgent):
@@ -464,7 +463,7 @@ class HallucinationArchon(base_agent.BaseAgent):
       </code></pre>
 
     <p>This agent creates a class in which observes if the Archon Hallucination is possible ,
-        locates the possition of the enemy and calls the selection and Hallucination action.
+        locates the position of the enemy and calls the selection and Hallucination action.
 
         Scripted agents might be able to execute programmed orders fast and straightforward.
         However, these agents are narrow ,
@@ -721,7 +720,7 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
     You can test your own mini-game, but this is what happens when HallucinIce mini-game was tested
 
 
-        <img src="pysc2_images/pysc2_HallucinICEA3C.gif"  style="max-width: 624px" alt="Quickstart overview of pySC2">
+        <img src="pysc2_images/pysc2_HallucinICEA3C.gif"  style="max-width: 500px" alt="Quickstart overview of pySC2">
 
     <p>As you can check, the agent learnt to hide and do nothing. Which take to think that not all algos are suitable
     for all the goals.
@@ -769,15 +768,16 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
     <h3>Bibliography</h3>
 
     <p>The following articles, papers, blog articles and conversations were used to make this codelab possible
-    [1] pySC2 paper
-    [2] DeepMind article
-    [3]
-    [4]
-    [5] keras-rl github policy
-    [6] Conversation in discord in between
-    [7]
-    [8]
-    [9]</p>
+    <ul class="checklist">
+       <li> [1] pySC2 paper </li>
+       <li>[2] DeepMind article </li>
+       <li>[3]</li>
+       <li>[4]</li>
+       <li>[5] keras-rl github policy </li>
+       <li>[6] Conversation in discord in between </li>
+       <li>[7] </li>
+       <li>[8]</li>
+       <li>[9]</li>
 
     <h3>Like it ?</h3>
     <p> Star it on github! </p>
