@@ -1,1 +1,1 @@
-Art for the codelab 
+Some of the gifs used for the talk 
