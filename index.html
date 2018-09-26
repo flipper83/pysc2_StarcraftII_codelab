@@ -100,7 +100,7 @@
       </ul>
    <aside class="special">
         <p>
-        <strong>Note:</strong>The colab install requirements takes a considerable amount of time, so the suggestion is to get ahead in the theory while installation is running
+        <strong>Note:</strong>The Colab install requirements takes a considerable amount of time, so the suggestion is to get ahead in the theory while installation is running
         </p>
       </aside>
 <google-codelab-survey survey-id="test-survey-123"><h4>How would rate your experience with Machine Learning?</h4>
@@ -123,7 +123,7 @@
       <img src="pysc2_images/pysc2_1_header.jpg"  style="max-width: 624px" alt="Install requirements">
 
 
-      <h2>Instalation of pysc2</h2>
+      <h2>Instalation of pySC2</h2>
       <p>This install section has been taken from <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">pysc2</a> documentation.</p>
       <pre><code>
  $ pip install pysc2      # Python 2.7; CPU support (no GPU support)
@@ -135,7 +135,7 @@
       </code></pre>
 
       <h2>Install the Game</h2>
-      <p>Install Starcraft II -note that you don´t need to have the license -game paid- of SC2 for developing Machine learning  )
+      <p>Install Starcraft II -note that you don´t need to have the license -game paid- of SC2 for developing Machine learning.
         PySC2 expects the game to be in /StarCraftII/
         For Linux, Follow Blizzard´s <a href="https://github.com/Blizzard/s2client-proto#downloads" target="_blank" rel="noopener">here</a> documentation and  click on the Linux Package versions be sure to install versions from 3.16.1 to above .
         Be sure to type the password ‘iagreetotheeula’ linked to the machine learning license . For windows and mac , Install the game as normal from Battle.net</p>
@@ -204,15 +204,15 @@ mini_games = [  ## This mini-games names should alredy been in your list
       <img src="pysc2_images/pysc2_2_header.jpg"  style="max-width: 624px" alt="Theory Deep Reinforcement Learning">
       <h2>The Reinforcement Learning Problem</h2>
       <p>The paradigm of learning by trial-and-error, exclusively from rewards is known as Reinforcement Learning .
-        The essence of RL is learning through interaction , mimicking the human way of learning [4] with an interaction with environment and has its roots in behaviourist psychology .</p>
+        The essence of RL is learning through interaction , mimicking the human way of learning [1] with an interaction with environment and has its roots in behaviourist psychology .</p>
 
       <p>For a definition of the Reinforcement Learning problem we need to define an environment in which a perception-action-learning loop [5] takes place .
         In this environment, the agent observes a given state from its environment .
         The agent, leaning in the policy, interacts with the environment by taking an action in a given state that may have long term consequences .
-        It goes to a next state with a given timestep t and updates the policy.At the end, the agent recieve observations/states from the environment
-      and interacts with the environment throught the actions </p>
+        It goes to a next state with a given timestep t and updates the policy.At the end, the agent receives observations/states from the environment
+      and interacts with the environment through the actions </p>
 
-      <img src="pysc2_images/pysc2_RL_perception_action_learning.gif"  style="max-width: 624px" alt="Learning loop">
+      <img src="pysc2_images/pysc2_RL_perception_action_learning.gif"  style="max-width: 300px" alt="Learning loop">
       <p>In RL , we trait both prediction and control problems, drained by state-value or action-value function.
         When you go down algorithmically in this challenge, it comes in how you treat the value function and how the policy strategy affects to the agent .</p>
         The Reinforcement Learning problem can be described formally into a Markov decision process :MPD describe an environment for reinforcement learning,
@@ -224,7 +224,7 @@ mini_games = [  ## This mini-games names should alredy been in your list
         <h2>RL Agents</h2>
         <p>Reinforcement learning agents may include one or more of these components .</p>
       <ul class="checklist">
-          <li><strong>Value function</strong> . V(s) Acts as an evaluator and process how much reward we spect to get ( how well we are doing )
+          <li><strong>Value function</strong> . V(s) Acts as an evaluator and process how much reward we expects to get ( how well we are doing )
 In RL taxonomy, you can find a classification that includes value based or policy based agents</li>
         <li><strong>Policy</strong>: Pi.  Understood as the Agent´s behaviour function.  The policy maps from state to action , and can be deterministic or stochastic .
 RL taxonomy includes ON policy algorithms -learning on the job (like SARSA)- or OFF (like Q-learning) policy algorithms - learning from other behaviour-
@@ -237,7 +237,7 @@ RL taxonomy stablish model free and model based agents. Model-based have the kno
 
         <p>There are two main approaches to solving RL problems : value-function and policy search .
           There is an hybrid explored recently also known as actor-critic approach </p>
-      <img src="pysc2_images/pysc2_RL_policy.gif"  style="max-width: 624px" alt="Learning loop">
+      <img src="pysc2_images/pysc2_RL_policy.gif"  style="max-width: 300px" alt="Learning loop">
         <p>How Policy learning  works : In a state St, we compute Q(s,a) and it takes one of the actions towards the goal .
         The agents acts with the environment by executing actions, and the environment acts with the agent by giving it the observations inherited from the actions the agent took.</p>
 
@@ -257,7 +257,7 @@ In some cases innovations come in the way we think about the value function</p>
     <p>Reinforcement Learning is an area of Machine Learning based on mimicking the human way of learning.
         We will see later on that  agents from pySC2 construct and learn their own knowledge directly from raw inputs , such as vision, using Deep Learning.
         The combination of these approaches, with the goal of achieving human-level performance across many challenging domains receive the name of Deep Reinforcement Learning [3] .
-        DRL can deal with some of the problems that RL has like the curse of dimensionality [6] . Neural Networks act as function approximators for solving the problem of finding optimal action-value functions ( Q -table ).</p>
+        DRL can deal with some of the problems that RL has like the curse of dimensionality [6] . Neural Networks act as function approximator for solving the problem of finding optimal action-value functions ( Q -table ).</p>
 
     <p>DQN = Deep Neural Network for Q Learning <strong>approximation</strong> </p>
 
@@ -343,22 +343,22 @@ In some cases innovations come in the way we think about the value function</p>
 
       <p>Functions actions have been created to solve this problem availabe at pysc2.lib.actions .
           The actions are the output of the agent in every state t, that means, the decisions the agent must take in every time-step  …
-          Pysc2 agent calls display available actions . Each action has its own argument or lists of arguments </p>
+          PySC2 agent calls display available actions . Each action has its own argument or lists of arguments </p>
 
       <img src="pysc2_images/pysc2_action.gif"  style="max-width: 624px" alt="Actions">
       <p>Action Space atomic level defined in pySC2</p>
 
     <h2>Agent Neural Net architectures</h2>
     <p>In DQN , The Neural Networks acts as an approximation function to find the Q- values.
-        In pysc2 research, DeepMind has tried several Neural Networks architectures , which include the Atari and CNN+LSTM architectures.
+        In pySC2 research, DeepMind has tried several Neural Networks architectures , which include the Atari and CNN+LSTM architectures.
         Both of them processes spatial (screen) and non-spatial ( vector of features) .The difference among the two of them is that Atari combines the Spatial and non-spatial features into a flatten layer that process the agent output, unrolling it into a space action policy through coordinates ( x and y ) and a value that will take the action .
-        In the Neural Net architecture proposed by pysc2 paper it combines the spatial and non-spatial features into a NN .</p>
+        In the Neural Net architecture proposed by pySC2 paper it combines the spatial and non-spatial features into a NN .</p>
 
-    <img src="pysc2_images/pysc2_FullConvarchitecture.gif"  style="max-width: 624px" alt="NeuralNet Architecture">
+    <img src="pysc2_images/pysc2_FullConvarchitecture.gif"  style="max-width: 450px" alt="NeuralNet Architecture">
 
    <h2>Results</h2>
 
-    <p>Here we have the comparison over different mini-games from pysc2 paper , in which there is an overview of how you can use different neural net architectures .
+    <p>Here we have the comparison over different mini-games from pySC2 paper , in which there is an overview of how you can use different neural net architectures .
         In the Y axis, we find the score of the game, in the X axis we find the training time .
         As we can see, FullyConv and Atari Net start giving best results than the FullyConv with memory in the case of Defeat Roaches mini-game.
         However, this paradigm changes in the long term and so does the performance of different architectures in different challenges.
@@ -418,7 +418,7 @@ $ python -m pysc2.bin.agent --map HallucinIce
 
       <pre><code>
 class RandomAgent(base_agent.BaseAgent):
-  """A random agent for starcraft."""
+  """A random agent for Starcraft II pysc2."""
 
   def step(self, obs):
     super(RandomAgent, self).step(obs)
@@ -444,7 +444,7 @@ $ python -m pysc2.bin.agent --map HallucinIce  --agent pysc2.agents.scripted_age
 
       <pre><code>
 class HallucinationArchon(base_agent.BaseAgent):
-  """An agent specifically for solving the HallucinIce map with Archon Unit."""
+  """An agent specifically for solving the HallucinIce map with Archon Unit for Starcraft II pysc2."""
 
   def step(self, obs):
     super(HallucinationArchon, self).step(obs)
@@ -708,7 +708,7 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
     strategy but still use a Neural Network for function approximation.
 
     The trade-off between exploration and explotation is challenging and an on-going
-    research topic. A recommended approach by keras-rl authors is Boltzmann-style exploration [6] , so if you feel like,
+    research topic. A recommended approach by keras-rl authors is Boltzmann-style exploration [3] , so if you feel like,
     give it a try and feel free to share your results !
 
     </p>
@@ -717,10 +717,9 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
     <h3>Try pre-trained A3C in your own mini-game</h3>
 
     <p>Some members of the community --  have code A2C and A3C and have generously released a pre-trained agent.
-    You can test your own mini-game, but this is what happens when HallucinIce mini-game was tested
+    You can test your own mini-game, but this is what happens when HallucinIce mini-game was tested</p>
 
-
-        <img src="pysc2_images/pysc2_HallucinICEA3C.gif"  style="max-width: 500px" alt="Quickstart overview of pySC2">
+        <img src="pysc2_images/pysc2_HallucinICEA3C.gif"  style="max-width: 300px" alt="Quickstart overview of pySC2">
 
     <p>As you can check, the agent learnt to hide and do nothing. Which take to think that not all algos are suitable
     for all the goals.
@@ -758,10 +757,11 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
         <li>Blizzard´s and DeepMind´s blogposts</li>
         <li>PySC2 paper and repository</li>
         <li>PySC2 selected tutorials by Steven Brown</li>
-        <li>RL tutorial by Cris-cris</li>
+        <li>RL <a href="http://chris-chris.ai/2017/08/30/pysc2-tutorial1/" target="_blank" rel="noopener">tutorials</a> by Cris-cris</li>
         <li>Wiki with bots ladder (scripted AI)</li>
-        <li>Community mini-games repo</li>
+        <li>Community <a href="https://github.com/SoyGema/pySC2_minigames" target="_blank" rel="noopener">mini-games</a> repo</li>
         <li>Discord channel</li>
+        <li>Research about the full game you can visit <a href="https://arxiv.org/abs/1809.07193" target="_blank" rel="noopener">TSTARBOTS</a> paper </li>
 
       </ul>
 
@@ -769,9 +769,9 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
 
     <p>The following articles, papers, blog articles and conversations were used to make this codelab possible
     <ul class="checklist">
-       <li> [1] pySC2 paper </li>
+       <li> [1] DeepMind article Deep Reinforcment Learning https://deepmind.com/blog/deep-reinforcement-learning/ </li>
        <li>[2] DeepMind article </li>
-       <li>[3]</li>
+       <li>[3] keras-rl documentation</li>
        <li>[4]</li>
        <li>[5] keras-rl github policy </li>
        <li>[6] Conversation in discord in between </li>
