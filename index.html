@@ -45,11 +45,18 @@
       duration="5">
       <p>
 
-      <img src="pysc2_images/pysc2_0_header.jpg"  style="max-width: 624px" alt="Starcraft II Learning environment">
+      <img src="pysc2_images/pysc2_0_header.jpg"  style="max-width: 750px" alt="Starcraft II Learning environment">
       <h2>Overview</h2>
       <p>
-        In this codelab, you will learn about Starcraft II Learning Environment project and to train your first Deep Reinforcement Learning agent. You will also discover an overview of DRL and  some of the concepts and frameworks to code a ML agent . The goal is to offer a general overview of how the environment works,
-          bring out some machine learning concepts to get started. </p>
+        In this codelab, you will learn about Starcraft II Learning Environment project and to train your first Deep Reinforcement Learning agent. You will also discover an overview of DRL and  some of the concepts and frameworks to code a ML agent.</p>
+       <aside class="special">
+        <p>
+        <strong>Note:</strong>     The goal is to offer a general overview of how the SC2 environment works,
+          bring out some machine learning concepts to get started.
+        </p>
+      </aside>
+
+      </p>
       <h2>Why Starcraft II ? </h2>
       <p>Computer games provide a compelling solution to the issue of evaluating and comparing different learning , control and planning approaches on standard tasks.  They present themselves as perfect sandboxes to agents to be trained before being applied to real world problems .
         Behind this challenges we´re facing a General purpose learning problem,as videogames are systems that are capable of learning how to adapt in the real world .</p>
@@ -104,7 +111,12 @@
         </p>
       </aside>
 <google-codelab-survey survey-id="test-survey-123"><h4>How would rate your experience with Machine Learning?</h4>
+
+
 <paper-radio-group><paper-radio-button>Novice</paper-radio-button><paper-radio-button>Intermediate</paper-radio-button><paper-radio-button>Advanced</paper-radio-button></paper-radio-group></google-codelab-survey>
+
+  <p><small><i>"With the right training, anyone can be in two places at once.
+    But their mind must be fully open. Oh, and they need a psionic amplifier. That helps too."</i> Repeatedly selected Protoss unit quote</small> </p>
     </google-codelab-step>
 
 
@@ -120,11 +132,12 @@
       duration="30">
       <p>
 
-      <img src="pysc2_images/pysc2_1_header.jpg"  style="max-width: 624px" alt="Install requirements">
-
+      <img src="pysc2_images/pysc2_1_header.jpg"  style="max-width: 750px" alt="Install requirements">
+      <p><small><i>"The stars align"</i> Void Raid Protoss move order unit quote</small> </p>
 
       <h2>Instalation of pySC2</h2>
-      <p>This install section has been taken from <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">pysc2</a> documentation.</p>
+      <p>This install section has been taken from <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">PySC2</a> documentation.
+      You can install it using pip : </p>
       <pre><code>
  $ pip install pysc2      # Python 2.7; CPU support (no GPU support)
       </code></pre>
@@ -135,10 +148,10 @@
       </code></pre>
 
       <h2>Install the Game</h2>
-      <p>Install Starcraft II -note that you don´t need to have the license -game paid- of SC2 for developing Machine learning.
+      <p>Install Starcraft II -note that you don´t need to have the game paid- of SC2 for developing Machine learning.
         PySC2 expects the game to be in /StarCraftII/
         For Linux, Follow Blizzard´s <a href="https://github.com/Blizzard/s2client-proto#downloads" target="_blank" rel="noopener">here</a> documentation and  click on the Linux Package versions be sure to install versions from 3.16.1 to above .
-        Be sure to type the password ‘iagreetotheeula’ linked to the machine learning license . For windows and mac , Install the game as normal from Battle.net</p>
+        Be sure to type the password <strong>‘iagreetotheeula’</strong> linked to the machine learning license . For windows and mac , Install the game as normal from Battle.net</p>
 
       <h2>Download mini-games and full ladder maps</h2>
       <p>Download the ladder maps and the mini-games and put them into your <strong>StarcraftII/Maps/</strong> folder. If the folder doesn´t exist , create it.
@@ -147,7 +160,7 @@
       <h2>Download the Codelab material</h2>
       <p>This codelab will launch an agent from a mini-game made by some community members  during last Blizzcon AI workshop .
       So be sure to download it</p>
-      <p><a href="https://github.com/.zip" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download source code</paper-button></a></p>
+      <p><a href="https://github.com/SoyGema/pysc2_StarcraftII_codelab/blob/master/pysc2_codelab_material.zip" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download source code</paper-button></a></p>
 
  <p> Go inside the pysc2_codelab_material folder and type :</p>
       <pre><code>
@@ -188,6 +201,7 @@ mini_games = [  ## This mini-games names should alredy been in your list
       <p>Now you have set up this challenging environment for machine learning research</p>
     </aside>
 
+  <p><small>"The merging is complete" Trained Adept Protoss unit quote</small> </p>
 </google-codelab-step>
 
 
@@ -201,87 +215,106 @@ mini_games = [  ## This mini-games names should alredy been in your list
       duration="30-40">
       <p>
 
-      <img src="pysc2_images/pysc2_2_header.jpg"  style="max-width: 624px" alt="Theory Deep Reinforcement Learning">
+      <img src="pysc2_images/pysc2_2_header.jpg"  style="max-width: 750px" alt="Theory Deep Reinforcement Learning">
+      <p><small><i>"Prismatic core online"</i> Stalker Protoss repeatedly selected order unit quote</small> </p>
+
       <h2>The Reinforcement Learning Problem</h2>
+
       <p>The paradigm of learning by trial-and-error, exclusively from rewards is known as Reinforcement Learning .
-        The essence of RL is learning through interaction , mimicking the human way of learning [1] with an interaction with environment and has its roots in behaviourist psychology .</p>
+        The essence of RL is learning through interaction , mimicking the human way of learning<sup>[1]</sup> with an interaction with environment and has its roots in behaviourist psychology .</p>
 
-      <p>For a definition of the Reinforcement Learning problem we need to define an environment in which a perception-action-learning loop [5] takes place .
-        In this environment, the agent observes a given state from its environment .
+      <p>For a definition of the Reinforcement Learning problem we need to define an environment in which a <strong>perception-action-learning loop</strong><sup>[fig1]</sup> takes place .
+        In this environment, the agent observes a given state t
         The agent, leaning in the policy, interacts with the environment by taking an action in a given state that may have long term consequences .
-        It goes to a next state with a given timestep t and updates the policy.At the end, the agent receives observations/states from the environment
-      and interacts with the environment through the actions </p>
+        It goes into a next state with a given timestep t<sub>+1</sub> and updates the policy.
+        At the end, the agent receives observations/states from the environment and a reward as a sign of feedback,
+      and interacts with the environment through the actions. </p>
 
-      <img src="pysc2_images/pysc2_RL_perception_action_learning.gif"  style="max-width: 300px" alt="Learning loop">
+    <center><img src="pysc2_images/pysc2_RL_perception_action_learning.gif"  style="max-width: 450px" alt="Learning loop"></center>
+      <center><p><small>[fig1] Perception-action-learning loop</small> </p></center>
+
       <p>In RL , we trait both prediction and control problems, drained by state-value or action-value function.
         When you go down algorithmically in this challenge, it comes in how you treat the value function and how the policy strategy affects to the agent .</p>
-        The Reinforcement Learning problem can be described formally into a Markov decision process :MPD describe an environment for reinforcement learning,
-  the surroundings or conditions in which the agent learns ( operates)  The Markov process is a sequence of states with the Markov property ,
+        The Reinforcement Learning problem can be described formally into a Markov decision process or MDP: it describes an environment for reinforcement learning,
+  the surroundings or conditions in which the agent learns or operates.
+    The Markov process is a sequence of states with the Markov property ,
   which claims that the future is independent of the past given the present .
-  That makes that we only shall need the last state </p>
+  That makes that we only shall need the last state to evaluate the agent.</p>
 
 
         <h2>RL Agents</h2>
-        <p>Reinforcement learning agents may include one or more of these components .</p>
+        <p>Reinforcement learning agents may include one or more of these components <sup>[2]</sup>.</p>
       <ul class="checklist">
-          <li><strong>Value function</strong> . V(s) Acts as an evaluator and process how much reward we expects to get ( how well we are doing )
-In RL taxonomy, you can find a classification that includes value based or policy based agents</li>
-        <li><strong>Policy</strong>: Pi.  Understood as the Agent´s behaviour function.  The policy maps from state to action , and can be deterministic or stochastic .
-RL taxonomy includes ON policy algorithms -learning on the job (like SARSA)- or OFF (like Q-learning) policy algorithms - learning from other behaviour-
+          <li><strong>Value function</strong> V(s). Acts as an evaluator and process how much reward we expects to get , or, in other words, measures how well we are doing .
+In RL taxonomy, you can find a classification that includes value based or policy based agents. </li>
+        <li><strong>Policy</strong>: Π .  Understood as the Agent´s behaviour function.  The policy maps from state to action , and can be deterministic or stochastic .
+RL taxonomy includes <strong>ON policy algorithms</strong> -learning on the job or <strong>OFF policy</strong> algorithms - learning from other behaviour-
             Policy ON and OFF algorithms differentiate about how it calculates the value function .
-          On-policy algos have no memory and v(s) comes from the same policy. In Policy-off algos , v(s) comes from another policy .
+          On-policy algos have no memory and v(s) comes from the same policy. In Policy-off algos , V(s) comes from another policy .
           The goal of RL is to find an optimal policy which achieves the maximum expected return from all states.</li>
         <li><strong>Model</strong>. Agent´s representation of the environment .
-RL taxonomy stablish model free and model based agents. Model-based have the knowledge about the environment and can be partial or totally observable .</li>
+RL taxonomy establish model free and model based agents. Model-based have the knowledge about the environment and can be partial or totally observable .</li>
       </ul>
 
-        <p>There are two main approaches to solving RL problems : value-function and policy search .
+        <p>There are two main approaches to solving RL problems : Value-function and Policy Search<sup>[fig2]</sup> .
           There is an hybrid explored recently also known as actor-critic approach </p>
-      <img src="pysc2_images/pysc2_RL_policy.gif"  style="max-width: 300px" alt="Learning loop">
-        <p>How Policy learning  works : In a state St, we compute Q(s,a) and it takes one of the actions towards the goal .
+      <center><img src="pysc2_images/pysc2_RL_policy.gif"  style="max-width: 450px" alt="Learning loop"></center>
+        <center><p><small>[fig2] Policy learning explanation graphic approach</small> </p></center>
+
+        <p>How Policy learning  works : In a state S<sub>t</sub>, we compute Q(s,a) and it takes one of the actions that helps to achieve the goal .
         The agents acts with the environment by executing actions, and the environment acts with the agent by giving it the observations inherited from the actions the agent took.</p>
 
     <h2>The value function </h2>
     <p>The Value function is a mathematical abstraction that acts as an evaluator of the agent. The reinforcement learning taxonomy and creation approach might define itself on how we treat the value function.
       It is important to underline that there are two kinds of value function :</p>
       <ul class="checklist">
-        <li><strong>State-value function</strong>. V(s) : measures how good is to be in a particular state</li>
-        <li><strong>Action-value function</strong>. Q (s, a) : measures How good is to take a particular action . Bellman Optimality equation, which is basic for defining the RL solution approach , is based in the Action-value function</li>
+        <li><strong>State-value function</strong>. V(s) : measures how good is to be in a particular state s.</li>
+        <li><strong>Action-value function</strong>. Q (s, a) : measures How good is to take a particular action . Bellman Optimality equation, which is basic for defining the RL solution approach , is based in the Action-value function.</li>
       </ul>
 
-   <p>Into Dynamic Programming context, policy search do not need to maintain a value function model, but search for an optimal policy .The process of producing an agent comes in two phases : policy evaluation and policy iteration ( improvement ) . They treat prediction and control problem.[6]
-In some cases innovations come in the way we think about the value function</p>
+   <p>Into Dynamic Programming context, policy search do not need to maintain a value function model, but search for an optimal policy .The process of producing an agent comes in two phases : policy evaluation and policy iteration ( improvement ) . They treat prediction and control problem respectively.[3]
+In some cases innovations come in the way we think and threat the value function.</p>
 
 
     <h2>What is Deep Reinforcement Learning?</h2>
-    <p>Reinforcement Learning is an area of Machine Learning based on mimicking the human way of learning.
+    <p>Reinforcement Learning is an area of Machine Learning based on mimicking the human way of learning<sup>[1]</sup>.
         We will see later on that  agents from pySC2 construct and learn their own knowledge directly from raw inputs , such as vision, using Deep Learning.
-        The combination of these approaches, with the goal of achieving human-level performance across many challenging domains receive the name of Deep Reinforcement Learning [3] .
-        DRL can deal with some of the problems that RL has like the curse of dimensionality [6] . Neural Networks act as function approximator for solving the problem of finding optimal action-value functions ( Q -table ).</p>
+        The combination of these approaches, with the goal of achieving human-level performance across many challenging domains receive the name of Deep Reinforcement Learning<sup>[3]</sup>.
+        DRL can deal with some of the problems that RL has like the curse of dimensionality [6] .In Deep Reinforcement learning, we use  Neural Networks act as function approximator for solving the problem of finding optimal action-value functions ( Q -table ).</p>
 
-    <p>DQN = Deep Neural Network for Q Learning <strong>approximation</strong> </p>
+   <aside class="special">
+        <p>
+        <strong>Note</strong> DQN = Deep Neural Network for Q Learning <strong>approximation</strong>
+        </p>
+   </aside>
 
-    <p>[6]In general, DRL is based on training deep neural networks to aproximate the optimal policy pi, and/or the optimal value functions V, Q and A .
+    <p>[6]In general, DRL is based on training deep neural networks to aproximate the optimal policy Π, and/or the optimal value functions V(s), Q and A .
     However, deep Q-networks are one way to solve deep RL problem . Another state of the art algorithm , A3C, introducing methods based on asynchronous RL.
     Video games may be an interesting challenge, but learning how to play them is not the end goal of DRL [4] , as the main goal is the vision of creating systems that are capable of learning how to adapt in the real world .
     In this codelab, we dig into a DRL agent for getting started with the machine learning challenge. Having said that, the environment present itself suitable for Reinforcement Learning in general and not only DRL . </p>
 
 
-    <p>DQN Algorithm <strong>Overview</strong></p>
+    <p>DQN Algorithm <strong>Overview</strong><sup>[fig3]</sup></p>
 
     <p>In a high level, the algo takes the input as the RGB pixels and gives the output of the value of the suitable actions that the agent might take with a given policy .
-        It initializes random action-value functions and in a loop of all episodes and all timesteps, follow a greedy policy in which selects a random action or the one in which the action-value function is higher .
+        It initializes random action-value functions Q (s, a) and in a loop of all episodes and all timesteps, follow a greedy policy in which selects a random action or the one in which the action-value function is higher  with probability ε .
         Execute action and store transition tuple in memory .</p>
 
-      <img src="pysc2_images/DQN_algorithm.jpg"  style="max-width: 624px" alt="DRL_pseudoCode">
+      <center><img src="pysc2_images/DQN_algorithm.jpg"  style="max-width: 750px" alt="DRL_pseudoCode"></center>
+        <center><p><small>[fig3] Deep Q-Network(DQN), adapted from Mnih et al(2015)</small> </p></center>
+
 
     <p>DQN Algorithm <strong>optimization</strong> : Target Network , Experience Replay and Hubber Loss</p>
 
-    <p> Experience Replay allows training using stored memories from its experience , and avoids to forget states that the Neural model hasn´t seen in a while.
+    <p><strong>Experience Replay</strong>allows training using stored memories from its experience, and avoids to forget states that the Neural model hasn´t seen in a while.
     The idea behind experience replay consists in : at each Q-learning iteration, you play one step in the game, but instead of updating the model based
-    on that step, you add the information from the step ypu took to a memory and then make a batch sample of that memory for training . [3]
+    on that step, you add the information from the step you took to a memory and then make a batch sample of that memory for training . [3]
 
-    The target Network brings stability to learning [7] . Every a number of iterations, we will make a copy of the Q-Network and use it to compute the target instead of the current Q-network.
+    The <strong>Target Network</strong> brings stability to learning [7] . Every a number of iterations, we will make a copy of the Q-Network and use it to compute the target instead of the current Q-network.
+
+    <strong>Hubber loss</strong> comes to estabilize learning in short and long term, as this function os quadratic for small values and linear for large values.
+        For those familiarized with the loss function coming from Neural Networks , it comes to say that it diverges into two different implementations.</p>
+
 
     <aside class="special">
       <h2>Congratulations!</h2>
@@ -305,14 +338,14 @@ In some cases innovations come in the way we think about the value function</p>
       duration="30-40">
       <p>
 
-      <img src="pysc2_images/pysc2_3_header.jpg"  style="max-width: 624px" alt="Theory pysc2 environment">
+      <img src="pysc2_images/pysc2_3_header.jpg"  style="max-width: 750px" alt="Theory pysc2 environment">
       <h2>Overview</h2>
 
     <p>Find in this section a ripped version of pySC2 research published <a href="https://arxiv.org/abs/1708.04782" target="_blank" rel="noopener">paper</a> by DeepMind and Blizzard.</p>
-    <p>Starcraft II presents itself as a grand challenge for Reinforcement Learning for several reasons : The imperfect information of the game while playing forces to guess what the opponent is doing -Partially Observable Markov Decision Process due to fog of War- .
-    Besides, the huge action space  -combinatorial space of 10e8 possibilities - urges the need for hierarchical actions, that might change as the tech player strategy evolves .
+    <p>Starcraft II presents itself as a grand challenge for Reinforcement Learning for several reasons : The imperfect information of the game while playing forces to guess what the opponent is doing -curiously , it is Partially Observable Markov Decision Process due to fog of War- .
+    Besides, the huge action space  -combinatorial space of 10<sup>e8</sup> possibilities - urges the need for <strong>hierarchy management</strong>, that might change as the tech player strategy evolves .
     The economy management  . Real-time simultaneousness, with fast paced decisions and multitasking management  presents the credit assignment problem as a necessity to be solved .</p>
-    <p>As the paper underlines, Starcraft 2 Learning environment offers a new environment for exploring DRL algos and architectures.
+    <p>As the paper underlines, Starcraft II Learning environment offers a new environment for exploring DRL algos and architectures.
     Here we will explore and ripped some useful concepts about the environment that might be use to understand them .
      The full potential of this environment has yet to be seen , as it  is a multi-agent environment at high and low level : several players compete for control over the map and resources , and ultimately win the match .
         In the low level, each player controls an army that must cooperate to achieve a common goal .</p>
@@ -334,7 +367,7 @@ In some cases innovations come in the way we think about the value function</p>
 
     <p><strong>Observations</strong></p>
 
-      <p>The games exposes observation from RGB pixels  rgb_screen  - view as a human would see -  and in a feature layer structure . Extra information beyond the screen is exposed as rgb_minimap  Feature like the pysc2 interpreter .
+      <p>The games exposes observation from <strong>RGB pixels</strong> exposed as rgb_screen and rgb_minimap - view as a human would see -  and in a <strong>Feature layers</strong> structure . Extra information beyond the screen is exposed as rgb_minimap  Feature like the pySC2 interpreter .
           Inside features we must differentiate in between minimap feature layers and screen feature layers. One is looking at the screen and the other is looking at the top bottom left minimap . </p>
       <p>Besides that, it offers as a structured information 10 Tensors with different data with relevant information for the player.</p>
 
@@ -755,7 +788,7 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
     <p>You can visit different sites with variety of depths.</p>
       <ul class="checklist">
         <li>Blizzard´s and DeepMind´s blogposts</li>
-        <li>PySC2 paper and repository</li>
+        <li>PySC2 <a>href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">repository</a> and paper</li>
         <li>PySC2 selected tutorials by Steven Brown</li>
         <li>RL <a href="http://chris-chris.ai/2017/08/30/pysc2-tutorial1/" target="_blank" rel="noopener">tutorials</a> by Cris-cris</li>
         <li>Wiki with bots ladder (scripted AI)</li>
