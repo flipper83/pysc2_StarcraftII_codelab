@@ -139,22 +139,23 @@
       <p>This install section has been taken from <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">PySC2</a> documentation.
       You can install it using pip : </p>
       <pre><code>
- $ pip install pysc2      # Python 2.7; CPU support (no GPU support)
+ $ pip install pysc2      # Python 2.7;
+ $ pip3 install pysc2     # Python 3.6
       </code></pre>
       <p>Or with git</p>
       <pre><code>
  $ git clone https://github.com/deepmind/pysc2.git       # Clone repository
- $ pip install pysc2/                                    # Install
+ $ pip install pysc2/                                    # Install it with pip or pip3
       </code></pre>
 
       <h2>Install the Game</h2>
       <p>Install Starcraft II -note that you don´t need to have the game paid- of SC2 for developing Machine learning.
-        PySC2 expects the game to be in /StarCraftII/
+        PySC2 expects the game to be in Applications/StarCraftII/
         For Linux, Follow Blizzard´s <a href="https://github.com/Blizzard/s2client-proto#downloads" target="_blank" rel="noopener">here</a> documentation and  click on the Linux Package versions be sure to install versions from 3.16.1 to above .
         Be sure to type the password <strong>‘iagreetotheeula’</strong> linked to the machine learning license . For windows and mac , Install the game as normal from Battle.net</p>
 
       <h2>Download mini-games and full ladder maps</h2>
-      <p>Download the ladder maps and the mini-games and put them into your <strong>StarcraftII/Maps/</strong> folder. If the folder doesn´t exist , create it.
+      <p>Download the <a href="https://github.com/Blizzard/s2client-proto#downloads" target="_blank" rel="noopener">ladder maps</a> and the <a href="https://github.com/SoyGema/pysc2_StarcraftII_codelab/blob/master/mini_games.zip" target="_blank" rel="noopener">mini-games</a> and put them into your <strong>StarcraftII/Maps/</strong> folder. If the folder doesn´t exist , create it.
       </p>
 
       <h2>Download the Codelab material</h2>
@@ -243,8 +244,8 @@ mini_games = [  ## This mini-games names should alredy been in your list
 
 
         <h2>RL Agents</h2>
-        <p>Reinforcement learning agents may include one or more of these components <sup>[2]</sup>.</p>
-      <ul class="checklist">
+        <p class= "checklist">Reinforcement learning agents may include one or more of these components <sup>[2]</sup>.</p>
+      <ul>
           <li><strong>Value function</strong> V(s). Acts as an evaluator and process how much reward we expects to get , or, in other words, measures how well we are doing .
 In RL taxonomy, you can find a classification that includes value based or policy based agents. </li>
         <li><strong>Policy</strong>: Π .  Understood as the Agent´s behaviour function.  The policy maps from state to action , and can be deterministic or stochastic .
@@ -265,9 +266,9 @@ RL taxonomy establish model free and model based agents. Model-based have the kn
         The agents acts with the environment by executing actions, and the environment acts with the agent by giving it the observations inherited from the actions the agent took.</p>
 
     <h2>The value function </h2>
-    <p>The Value function is a mathematical abstraction that acts as an evaluator of the agent. The reinforcement learning taxonomy and creation approach might define itself on how we treat the value function.
+    <p class= "checklist">The Value function is a mathematical abstraction that acts as an evaluator of the agent. The reinforcement learning taxonomy and creation approach might define itself on how we treat the value function.
       It is important to underline that there are two kinds of value function :</p>
-      <ul class="checklist">
+      <ul>
         <li><strong>State-value function</strong>. V(s) : measures how good is to be in a particular state s.</li>
         <li><strong>Action-value function</strong>. Q (s, a) : measures How good is to take a particular action . Bellman Optimality equation, which is basic for defining the RL solution approach , is based in the Action-value function.</li>
       </ul>
@@ -339,6 +340,8 @@ In some cases innovations come in the way we think and threat the value function
       <p>
 
       <img src="pysc2_images/pysc2_3_header.jpg"  style="max-width: 750px" alt="Theory pysc2 environment">
+      <p><small><i>(Sound effect)</i> Probe Protoss selected order unit quote</small> </p>
+
       <h2>Overview</h2>
 
     <p>Find in this section a ripped version of pySC2 research published <a href="https://arxiv.org/abs/1708.04782" target="_blank" rel="noopener">paper</a> by DeepMind and Blizzard.</p>
@@ -371,6 +374,10 @@ In some cases innovations come in the way we think and threat the value function
           Inside features we must differentiate in between minimap feature layers and screen feature layers. One is looking at the screen and the other is looking at the top bottom left minimap . </p>
       <p>Besides that, it offers as a structured information 10 Tensors with different data with relevant information for the player.</p>
 
+    <img src="pysc2_images/pysc2_feature_layers.png"  style="max-width: 624px" alt="Actions">
+        <center><p><small>Feature Layer view, initialized with the game</small> </p></center>
+
+
 
     <p><strong>Actions</strong></p>
 
@@ -378,16 +385,19 @@ In some cases innovations come in the way we think and threat the value function
           The actions are the output of the agent in every state t, that means, the decisions the agent must take in every time-step  …
           PySC2 agent calls display available actions . Each action has its own argument or lists of arguments </p>
 
-      <img src="pysc2_images/pysc2_action.gif"  style="max-width: 624px" alt="Actions">
-      <p>Action Space atomic level defined in pySC2</p>
+      <center><img src="pysc2_images/pysc2_action.gif"  style="max-width: 624px" alt="Actions"></center>
+    <center><p><small>Action Space atomic level defined in pySC2</small></p></center>
 
     <h2>Agent Neural Net architectures</h2>
-    <p>In DQN , The Neural Networks acts as an approximation function to find the Q- values.
-        In pySC2 research, DeepMind has tried several Neural Networks architectures , which include the Atari and CNN+LSTM architectures.
-        Both of them processes spatial (screen) and non-spatial ( vector of features) .The difference among the two of them is that Atari combines the Spatial and non-spatial features into a flatten layer that process the agent output, unrolling it into a space action policy through coordinates ( x and y ) and a value that will take the action .
+    <p>In DQN , The Neural Networks acts as an approximation function to find the Q-values.
+        In pySC2 research, DeepMind has tried several Neural Networks architectures , which include the Atari and CNN+LSTM<sup>[fig4]</sup> architectures.
+        Both of them processes spatial -screen- and non-spatial -vector of features- .The difference among the two of them is that Atari combines the Spatial and non-spatial features into a flatten layer that process the agent output, unrolling it into a space action policy through coordinates ( x and y ) and a value that will take the action .
         In the Neural Net architecture proposed by pySC2 paper it combines the spatial and non-spatial features into a NN .</p>
 
-    <img src="pysc2_images/pysc2_FullConvarchitecture.gif"  style="max-width: 450px" alt="NeuralNet Architecture">
+    <center><img src="pysc2_images/pysc2_FullConvarchitecture.gif"  style="max-width: 450px" alt="NeuralNet Architecture"></center>
+    <center><p><small>Full Conv Architecture</small></p></center>
+
+
 
    <h2>Results</h2>
 
@@ -399,7 +409,7 @@ In some cases innovations come in the way we think and threat the value function
         the end it changes and shows the best performance on LSTM+CNN . In Defeat Roaches case, starting learning quicker doesn´t mean that there will be a better
         performance when the NN stabilizes itself . </p>
 
-    <img src="pysc2_images/pysc2_results.png"  style="max-width: 624px" alt="Results of performance in different mini-games">
+    <center><img src="pysc2_images/pysc2_results.png"  style="max-width: 624px" alt="Results of performance in different mini-games"></center>
 
 
     <h2>What are mini-games?</h2>
@@ -428,7 +438,9 @@ In some cases innovations come in the way we think and threat the value function
       duration="10">
       <p>
 
-      <img src="pysc2_images/pysc2_4_header.jpg"  style="max-width: 624px" alt="Quickstart overview of pySC2">
+      <img src="pysc2_images/pysc2_4_header.jpg"  style="max-width: 750px" alt="Quickstart overview of pySC2">
+      <p><small><i>"The task ahead is difficult, but worthwhile"</i> Karax Protoss repeatedly selected unit quote</small> </p>
+
 
      <h2>Configuration</h2>
      <p>You can configure all the requirements for getting started in the <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">pysc2</a> official
@@ -437,13 +449,14 @@ In this section we will test the running environment with the mini-game that we 
 
 
      <h2>Run Random Agent</h2>
+     <p>Open a terminal and type</p>
       <pre><code>
 $ python -m pysc2.bin.agent --map HallucinIce
       </code></pre>
 
      <p>You should see something like this</p>
 
-      <img src="pysc2_images/pysc2_HallucinIceRandom.gif"  style="max-width: 624px" alt="Random Hallucination">
+      <center><img src="pysc2_images/pysc2_HallucinIceRandom.gif"  style="max-width: 624px" alt="Random Hallucination"></center>
 
 
      <p>As you can check, there is nor learning neither strategy on this, as the agent is selecting random actions.
@@ -462,7 +475,8 @@ class RandomAgent(base_agent.BaseAgent):
       </code></pre>
 
      <p></p>
-     <p>Defines a variable that selects randomly an available action and call it with its arguments at each step</p>
+     <p>Basically, the RandomAgent class extends from the base_agent and we define what is doing at each step </p>
+     , in which defines a variable that selects randomly an available action and call it with its arguments at each step</p>
 
       <h2>Run Scripted Agent</h2>
      <p>Scripted agents are a set of handcrafted rules that help the agents take a strategy
@@ -473,7 +487,7 @@ $ python -m pysc2.bin.agent --map HallucinIce  --agent pysc2.agents.scripted_age
 
     <p>And should see something like this</p>
 
-      <img src="pysc2_images/pysc2_HallucinIceArchon.gif"  style="max-width: 500px" alt="Archon Hallucination">
+    <center><img src="pysc2_images/pysc2_HallucinIceArchon.gif"  style="max-width: 500px" alt="Archon Hallucination"></center>
 
       <pre><code>
 class HallucinationArchon(base_agent.BaseAgent):
@@ -482,23 +496,23 @@ class HallucinationArchon(base_agent.BaseAgent):
   def step(self, obs):
     super(HallucinationArchon, self).step(obs)
     if _HAL_ARCHON in obs.observation["available_actions"]:
-      player_relative = obs.observation["feature_screen"][_PLAYER_RELATIVE]
+      player_relative = obs.observation.feature_screen.player_relative
       hellion_y, hellion_x = (player_relative == _PLAYER_HOSTILE).nonzero()
       if not hellion_y.any():
-        return actions.FunctionCall(_NO_OP, [])
+        return FUNCTIONS.no_op()
       index = numpy.argmax(hellion_y)
       target = [hellion_x[index], hellion_y[index]]
-      return actions.FunctionCall(_HAL_ARCHON, [_NOT_QUEUED])
+      return FUNCTIONS.Hallucination_Archon_quick("now", target)
     elif _SELECT_ARMY in obs.observation["available_actions"]:
-      return actions.FunctionCall(_SELECT_ARMY, [_SELECT_ALL])
+      return FUNCTIONS.select_army("select")
     else:
-      return actions.FunctionCall(_NO_OP, [])
+      return FUNCTIONS.no_op()
       </code></pre>
 
     <p>This agent creates a class in which observes if the Archon Hallucination is possible ,
-        locates the position of the enemy and calls the selection and Hallucination action.
+        locates the position of the enemy and calls the selection and Hallucination action.</p>
 
-        Scripted agents might be able to execute programmed orders fast and straightforward.
+    <p>Scripted agents might be able to execute programmed orders fast and straightforward.
         However, these agents are narrow ,
         not able to execute orders outside those rules and, in the last phase, don´t learn and generalize well .
     In the next step we will jump into the machine learning agent </p>
@@ -524,15 +538,18 @@ class HallucinationArchon(base_agent.BaseAgent):
       step="6"
       duration="30-40">
       <p>
-      <img src="pysc2_images/pysc2_5_header.jpg"  style="max-width: 624px" alt="Quickstart overview of pySC2">
+      <img src="pysc2_images/pysc2_5_header.jpg"  style="max-width: 750px" alt="Quickstart overview of pySC2">
+      <p><small><i>"Willingly."</i> Mothership Protoss selected order unit quote</small> </p>
+
+
 
     <h2>Into the machine learning agent</h2>
 
 
-    <p>Here is presented an overview of the agent´s code : an informal walkthrough and descriptive inspection of the code, in order to help others to understand and improve the implementation .
+    <p class="checklist"> Here is presented an overview of the agent´s code : an informal walkthrough and descriptive inspection of the code, in order to help others to understand and improve the implementation .
 	In a functional overview, the code is making the following steps.</p>
 
-    <ul class="checklist">
+    <ul>
         <li>Import statements from libraries : pySC2, <a href="https://keras.io" target="_blank" rel="noopener">keras</a> and <a href="https://keras-rl.readthedocs.io/en/latest/" target="_blank" rel="noopener">keras-rl</a></li>
         <li>Load actions from the API</li>
         <li>Configure flags and parameters</li>
@@ -541,27 +558,26 @@ class HallucinationArchon(base_agent.BaseAgent):
         <li>Agent model DNN Architecture</li>
         <li>Process of training the game </li>
 
-      </ul>
+    </ul>
 
     <h3>Agent Overview and DNN Architecture</h3>
 
     <p> We understand the agent as the Learner , the  decision maker .
         There might be many different agents that can be used for this challenge
-        The goal of the agent is to learn a policy (control strategy) that maximizes the expected return ( cumulative, discounted reward)
-    The agent uses knowledge of state transitions, of the form (st, at, st+1, rt+1) in order to learn and improve its policy .
-        In DQN , we use a Neural Network as a function approximator for the Q-values.
+        The goal of the agent is to learn a policy -control strategy- that maximizes the expected return -cumulative, discounted reward-.
+    The agent uses knowledge of state transitions, of the form (s<sub>t</sub>, a<sub>t</sub>, s<sub>t+1</sub>, r<sub>t+1</sub>) in order to learn and improve its policy .
+        In DQN , we use a Neural Network as a function approximator for the Q-values.</p>
         Deep Q Learning is a model-free off policy algorithm that will define the agent.
-        If you want to know more about the basis of the agent , jump up to The Step 3 ( The RL problem )
+        If you want to know more about the basis of the agent , jump into The Step 3 and read what is Deep Reinforcement learning?</p>
 
-    ## Quora https://www.quora.com/How-does-the-CNN-LSTM-model-work
 
-    The agent is constructed looking at the feature layers with a CNN-LSTM network.
+    <p>The agent is constructed looking at the feature layers with a CNN-LSTM network.
     This network is an LSTM architecture specifically designed for sequence prediction
     problems with inputs, like images or videos. This architecture involves using Convolutional Neural Networks(CNN)
     layers for feature extraction on input data combined with LSTms to support
-    sequence prediction .
+    sequence prediction .</p>
 
-    In a general approach, this neural net architecture has been used for Activity Recognition,
+    <p>In a general approach, this neural net architecture has been used for Activity Recognition,
     Image and video description </p>
 
 
@@ -603,7 +619,7 @@ class HallucinationArchon(base_agent.BaseAgent):
     The Neural Network architecture is made of 3 conv2D layers of different kernel_sizes with dropout , and add it
     a last layer of LSTM .
 
-    <img src="pysc2_images/pysc2_Neural_Net_Graph.jpg"  style="max-width: 624px" alt="Quickstart overview of pySC2">
+    <img src="pysc2_images/pysc2_Neural_Net_Graph.jpg"  style="max-width: 750px" alt="Quickstart overview of pySC2">
 
 
 
@@ -643,11 +659,11 @@ class HallucinationArchon(base_agent.BaseAgent):
     The <strong>target_model_update</strong> and <strong>delta_clip</strong> parameters
     related to optimization and stable learning of Deep Reinforcement learning: target model update will tell us
         how oftenly the weights will be transferred to the memory. Delta_clip parameter refers
-        to Huber loss implementation
+        to Huber loss implementation. </p>
 
-    Another callbacks like tensorboard are added in order to visualize the learning
+    <p>Another callbacks like tensorboard are added in order to visualize the learning.</p>
 
-    DQN Algorithm has its own challenges . In keras-rl library you can implement in a
+    <p>DQN Algorithm has its own challenges . In keras-rl library you can implement in a
     straightforward way Replay memory, target Network and Huber loss by hyperparameters.
     For further evolutions and variations of DQN, you can study Double Deep Q Learning, Dueling Q-Learning
     and Rainbow algorithm</p>
@@ -676,24 +692,29 @@ class HallucinationArchon(base_agent.BaseAgent):
       duration="30-forever">
       <p>
 
-      <img src="pysc2_images/pysc2_6_header.jpg"  style="max-width: 624px" alt="Quickstart overview of pySC2">
+      <img src="pysc2_images/pysc2_6_header.jpg"  style="max-width: 750px" alt="Quickstart overview of pySC2">
+      <p><small><i>"The Void will answer"</i> Mohandar Protoss trained order unit quote</small> </p>
 
 
     <h3>Running and training</h3>
 
     <p>It´s time to get the agent running!
-    Type in your console . Note that the path/Graph will be created once the training has started </p>
+    Type in your console .</p>
 
     <pre><code>
-$ tensorboard --logdir path/Graph --host localhost --port 8088
-      </code></pre>
+$ python3 CNN_LSTM.py
+    </code></pre>
 
 
     <h3>Visualizing in Tensorboard</h3>
 
     <p>There exist a pre-configured callback in the agent that allows
     to you to run Tensorboard. Once you start your training, type in your console.
-    You should see something like this</p>
+    You should see something like this. Note that the path/Graph will be created once the training has started.</p>
+
+    <pre><code>
+$ tensorboard --logdir path/Graph --host localhost --port 8088
+    </code></pre>
 
  </google-codelab-step>
 
@@ -710,16 +731,15 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
       duration="30-forever">
       <p>
 
-      <img src="pysc2_images/pysc2_7_header.jpg"  style="max-width: 624px" alt="Quickstart overview of pySC2">
+      <img src="pysc2_images/pysc2_7_header.jpg"  style="max-width: 750px" alt="Quickstart overview of pySC2">
+      <p><small><i>"Hierach?"</i> Talandar Protoss selected order unit quote</small> </p>
 
 
     <h3>Try your own mini-game</h3>
 
-    <p>You can try your own mini-game by changing the following steps in your pySC2 folder</p>
-
-
-    <ul class="checklist">
-        <li>Create your mini-game</li>
+    <p class="checklist">You can try your own mini-game by changing the following steps in your pySC2 folder</p>
+    <ul>
+        <li>Create your mini-game. You can visit this tutorial that changes DefeatRoaches into DefeatWhatever melee</li>
         <li>Add your mini-game to the array in pysc2\maps\mini_games.py</li>
         <li>Add the mini-game name into the Flag config and training_game section of the agent_CNN+LSTM.py</li>
         <li>Run the agent in your console</li>
@@ -775,20 +795,22 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
       duration="10">
       <p>
 
-      <img src="pysc2_images/pysc2_8_header.jpg"  style="max-width: 624px" alt="Quickstart overview of pySC2">
+      <img src="pysc2_images/pysc2_8_header.jpg"  style="max-width: 750px" alt="Quickstart overview of pySC2">
+      <p><small><i>"What is it you seek, my friend?"</i> Fenix Protoss repeatedly selected unit quote</small> </p>
+
 
     </p>
 
-      <h2>You´ve made it!</h2>
+      <h3>You´ve made it!</h3>
       <p>It´ been an interesting ride. Now you know more about the Starcraft II research environment.</p>
 
 
     <h3>More resources</h3>
 
-    <p>You can visit different sites with variety of depths.</p>
-      <ul class="checklist">
-        <li>Blizzard´s and DeepMind´s blogposts</li>
-        <li>PySC2 <a>href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">repository</a> and paper</li>
+    <p class="checklist">You can visit different sites with variety of depths.</p>
+      <ul>
+        <li><a href="http://us.battle.net/sc2/en/blog/20944009/the-starcraft-ii-api-has-arrived-8-9-2017" target="_blank" rel="noopener">Blizzard´s</a> and <a href="https://deepmind.com/blog/deepmind-and-blizzard-open-starcraft-ii-ai-research-environment/" target="_blank" rel="noopener">DeepMind´s</a> blogposts</li>
+        <li>PySC2 <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">repository</a> and paper</li>
         <li>PySC2 selected tutorials by Steven Brown</li>
         <li>RL <a href="http://chris-chris.ai/2017/08/30/pysc2-tutorial1/" target="_blank" rel="noopener">tutorials</a> by Cris-cris</li>
         <li>Wiki with bots ladder (scripted AI)</li>
@@ -800,8 +822,8 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
 
     <h3>Bibliography</h3>
 
-    <p>The following articles, papers, blog articles and conversations were used to make this codelab possible
-    <ul class="checklist">
+    <p class="checklist">The following articles, papers, blog articles and conversations were used to make this codelab possible
+    <ul>
        <li> [1] DeepMind article Deep Reinforcment Learning https://deepmind.com/blog/deep-reinforcement-learning/ </li>
        <li>[2] DeepMind article </li>
        <li>[3] keras-rl documentation</li>
@@ -809,8 +831,9 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
        <li>[5] keras-rl github policy </li>
        <li>[6] Conversation in discord in between </li>
        <li>[7] </li>
-       <li>[8]</li>
+       <li>[8] CNN+ LSTM ## Quora https://www.quora.com/How-does-the-CNN-LSTM-model-work </li>
        <li>[9]</li>
+    </ul>
 
     <h3>Like it ?</h3>
     <p> Star it on github! </p>
