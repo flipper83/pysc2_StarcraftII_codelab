@@ -185,7 +185,8 @@ def training_game():
  
     # Agent
  
-    dqn = DQNAgent(model=model, nb_actions=nb_actions, memory=memory, enable_double_dqn=False,
+    dqn = DQNAgent(model=model, nb_actions=nb_actions, memory=memory, enable_double_dqn=True,
+                   enable_dueling_network=True,
                    nb_steps_warmup=500, target_model_update=1e-2, policy=policy,
                    batch_size=150,
                    processor=processor,
