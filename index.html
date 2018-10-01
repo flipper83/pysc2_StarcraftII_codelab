@@ -80,7 +80,7 @@
 
 
       <h2 class="checklist">What you'll learn</h2>
-      <ul class="checklist">
+      <ul>
         <li>What is pySC2</li>
         <li>Basics theoretical concepts of Deep Reinforcement Learning to get started</li>
         <li>Basic interaction with API</li>
@@ -99,7 +99,7 @@
       </ul>
 
       <h2 class="checklist">What you need to know</h2>
-      <ul>
+      <ul class="checklist">
         <li>Basic driving of bash console</li>
         <li>Basic knowledge of python - data structures, lists, functions, loops - </li>
         <li>Basic knowledge of Object-oriented programming -classes, methods, decorators -</li>
@@ -322,7 +322,7 @@ In some cases innovations come in the way we think and threat the value function
         In Double Deep Q learning, two value functions <strong>V(s)</strong> are calculated : one set of weights is used to determine the greedy policy - <strong>improvement</strong>- and the other is used to determine its value -<strong>evaluation</strong>.
         In this case, the evaluation network trains and from time to time it passes the weights to the improvement network. Then the improvement network learns and passes it again to the evaluation network . [10]</p>
 
-    <center><img src="pysc2_images/Double_DQN.jpg"  style="max-width: 750px" alt=""></center>
+    <center><img src="pysc2_images/Double_DQN.png"  style="max-width: 750px" alt=""></center>
 
 
     <p><strong>Dueling DQN</strong> helps to generalize learning and the key insight behind the architecture is that for many states, it is unnecessary to estimate the value of each action choice. </p>
@@ -404,7 +404,7 @@ In some cases innovations come in the way we think and threat the value function
           PySC2 agent calls display available actions . Each action has its own argument or lists of arguments </p>
 
       <center><img src="pysc2_images/pysc2_action.gif"  style="max-width: 624px" alt="Actions"></center>
-    <center><p><small>Action Space atomic level defined in pySC2</small></p></center>
+    <center><p><small>Action Space atomic level defined in pySC2 - Image by Deepmind -</small></p></center>
 
     <h2>Agent Neural Net architectures</h2>
     <p>In DQN , The Neural Networks acts as an approximation function to find the Q-values.
