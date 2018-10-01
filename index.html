@@ -150,12 +150,12 @@
 
       <h2>Install the Game</h2>
       <p>Install Starcraft II -note that you don´t need to have the game paid- of SC2 for developing Machine learning.
-        PySC2 expects the game to be in Applications/StarCraftII/
+        PySC2 expects the game to be in <code>Applications/StarCraftII/</code>&#160;.
         For Linux, Follow Blizzard´s <a href="https://github.com/Blizzard/s2client-proto#downloads" target="_blank" rel="noopener">here</a> documentation and  click on the Linux Package versions be sure to install versions from 3.16.1 to above .
         Be sure to type the password <strong>‘iagreetotheeula’</strong> linked to the machine learning license . For windows and mac , Install the game as normal from Battle.net</p>
 
       <h2>Download mini-games and full ladder maps</h2>
-      <p>Download the <a href="https://github.com/Blizzard/s2client-proto#downloads" target="_blank" rel="noopener">ladder maps</a> and the <a href="https://github.com/SoyGema/pysc2_StarcraftII_codelab/blob/master/mini_games.zip" target="_blank" rel="noopener">mini-games</a> and put them into your <strong>StarcraftII/Maps/</strong> folder. If the folder doesn´t exist , create it.
+      <p>Download the <a href="https://github.com/Blizzard/s2client-proto#downloads" target="_blank" rel="noopener">ladder maps</a> and the <a href="https://github.com/SoyGema/pysc2_StarcraftII_codelab/blob/master/mini_games.zip" target="_blank" rel="noopener">mini-games</a> and put them into your <code>StarcraftII/Maps/</code>&#160; folder. If the folder doesn´t exist , create it.
       </p>
 
       <h2>Download the Codelab material</h2>
@@ -168,14 +168,14 @@
  $   pip install requirements.txt
       </code></pre>
 
-        <li><p>Place the scripted_agent.py in Applications/Starcraft II/pysc2/agents</p></li>
+        <li><p>Place the scripted_agent.py in <code>Applications/StarCraftII/pysc2/agents</code>&#160;</p></li>
 
 
 
           <h2>Install requirements</h2>
        <p class="checklist">Once there, follow the instructions : </p>
       <ul>
-        <li>Go to pysc2\maps\mini_games.py and add to mini-games array the following mini-games names</li>
+        <li>Go to <code>pysc2\maps\mini_games.py</code>&#160; and add to mini-games array the following mini-games names</li>
 
 
       <pre><code>
@@ -316,6 +316,24 @@ In some cases innovations come in the way we think and threat the value function
     <strong>Hubber loss</strong> comes to estabilize learning in short and long term, as this function os quadratic for small values and linear for large values.
         For those familiarized with the loss function coming from Neural Networks , it comes to say that it diverges into two different implementations.</p>
 
+    <p>DQN <strong>variations</strong>: Double Deep Q-learning with dueling Network Architecture</p>
+
+    <p><strong>Double Q-learning</strong>[fig4] is a model-free policy off algorithm can be used at scale to successfully reduce the overoptimism inherited from DQN, resulting in more stable and reliable learning.
+        In Double Deep Q learning, two value functions <strong>V(s)</strong> are calculated : one set of weights is used to determine the greedy policy - <strong>improvement</strong>- and the other is used to determine its value -<strong>evaluation</strong>.
+        In this case, the evaluation network trains and from time to time it passes the weights to the improvement network. Then the improvement network learns and passes it again to the evaluation network . [10]</p>
+
+    <center><img src="pysc2_images/Double_DQN.jpg"  style="max-width: 750px" alt=""></center>
+
+
+    <p><strong>Dueling DQN</strong> helps to generalize learning and the key insight behind the architecture is that for many states, it is unnecessary to estimate the value of each action choice. </p>
+        Besides, it decouples the idea of action-value <strong>Q(s,a)</strong> function into state-value function <strong>V(s)</strong> and advantage function <strong>A(s,a)</strong>, which leads to better policy evaluation, and has shown good results   [11] , shining in attention and focus.</p>
+    <p>The dueling network has two streams to separately estimate scalar state-value and the advantages for each action: a module implements an equation - non trivial- to combine them.</p>
+
+   <aside class="special">
+        <p>
+        <strong>Note</strong> The key ideas for this architecture are : reduce overoptimism and help with generalization.
+        </p>
+   </aside>
 
     <aside class="special">
       <h2>Congratulations!</h2>
@@ -772,7 +790,7 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
     <p>Some members of the community --  have code A2C and A3C and have generously released a pre-trained agent.
     You can test your own mini-game, but this is what happens when HallucinIce mini-game was tested</p>
 
-        <img src="pysc2_images/pysc2_HallucinICEA3C.gif"  style="max-width: 300px" alt="Quickstart overview of pySC2">
+    <center><img src="pysc2_images/pysc2_HallucinICEA3C.gif"  style="max-width: 300px" alt="Quickstart overview of pySC2"></center>
 
     <p>As you can check, the agent learnt to hide and do nothing. Which take to think that not all algos are suitable
     for all the goals.
@@ -811,12 +829,11 @@ $ tensorboard --logdir path/Graph --host localhost --port 8088
       <ul>
         <li><a href="http://us.battle.net/sc2/en/blog/20944009/the-starcraft-ii-api-has-arrived-8-9-2017" target="_blank" rel="noopener">Blizzard´s</a> and <a href="https://deepmind.com/blog/deepmind-and-blizzard-open-starcraft-ii-ai-research-environment/" target="_blank" rel="noopener">DeepMind´s</a> blogposts</li>
         <li>PySC2 <a href="https://github.com/deepmind/pysc2" target="_blank" rel="noopener">repository</a> and paper</li>
-        <li>PySC2 selected tutorials by Steven Brown</li>
+        <li>PySC2 selected  <a href="https://itnext.io/build-a-zerg-bot-with-pysc2-2-0-295375d2f58e" target="_blank" rel="noopener">tutorials</a>  by Steven Brown</li>
         <li>RL <a href="http://chris-chris.ai/2017/08/30/pysc2-tutorial1/" target="_blank" rel="noopener">tutorials</a> by Cris-cris</li>
-        <li>Wiki with bots ladder (scripted AI)</li>
         <li>Community <a href="https://github.com/SoyGema/pySC2_minigames" target="_blank" rel="noopener">mini-games</a> repo</li>
-        <li>Discord channel</li>
-        <li>Research about the full game you can visit <a href="https://arxiv.org/abs/1809.07193" target="_blank" rel="noopener">TSTARBOTS</a> paper </li>
+        <li>For some research about the full game you can visit <a href="https://arxiv.org/abs/1809.07193" target="_blank" rel="noopener">TSTARBOTS</a>
+            Tencent paper </li>
 
       </ul>
 
