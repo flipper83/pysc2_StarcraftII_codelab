@@ -1,0 +1,31 @@
+{
+  "entrypoint": "index.html",
+  "sources": [
+    "pysc2_codelab_material/**/*",
+    "pysc2_images/**/*"
+  ],
+  "extraDependencies": [
+    "pysc2_codelab_material.zip",
+    "mini_games.zip",
+    "bower_components/webcomponents/webcomponentsjs/*.js",
+    "bower_components/webcomponents/webcomponentsjs/bundles/*.js"
+  ],
+  "builds": [
+    {
+      "name": "es5-bundled",
+      "js": {
+        "minify": true,
+        "compile": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": true,
+      "addServiceWorker": true
+    }
+  ]
+}
