@@ -16,7 +16,7 @@ deploy:
   skip-cleanup: true
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep-history: false
-  repo: flipper83/flipper83.github.io
+  repo: flipper83/flipper83.github.io/starcraft
   target-branch: starcraft
   on:
     branch: master
