@@ -19,4 +19,4 @@ deploy:
   repo: flipper83/flipper83.github.io
   target-branch: starcraft
   on:
-    branch: starcraft
+    branch: master
