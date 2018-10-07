@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- stable
+
+before_install:
+  - npm install -g bower
+  - npm install -g polymer-cli
+
+install: bower install
+
+script: polymer build
+
+deploy:
+  provider: pages
+  local-dir: build
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: false
+  repo: flipper83/flipper83.github.io
+  target-branch: starcraft
+  on:
+    branch: starcraft
